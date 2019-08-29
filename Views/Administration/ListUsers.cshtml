@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BugReportingManagement.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "All Users";
+}
+
+<h3>All Users</h3>
+
+@if (Model.Any())
+{
+    //if users present in the model
+    <a asp-action="Register" asp-controller="Account"
+       class="btn btn-primary mb-3" style="width:auto">
+       Add new user
+    </a>
+    //loop through each user
+    foreach (var user in Model)
+    {
+<div class="card mb-3">
+    <div class="card-header" style="font-weight:bold">
+        Company Name: @user.ProjectName
+    </div>
+    <div class="card-body" style="font-weight:bold">
+        <div>
+            ID : @user.Id
+        </div>
+        <div>
+            First Name: @user.FirstName
+        </div>
+        <div>
+            Last Name: @user.LastName
+        </div>
+        <div>
+            Email:     @user.Email
+        </div>
+        <div>
+            Phone:     @user.PhoneNumber
+        </div>
+    </div>
+    <div class="card-footer">
+        <a asp-action="EditUser" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
+        <a asp-action="DeleteUser" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+    }
+}
+else
+{
+<div class="card">
+    <div class="card-header">
+        No users created yet
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">
+            Use the button to create a user
+        </h5>
+        <a class="btn btn-primary" style="width:auto"
+           asp-controller="Account" asp-action="Register">
+           Add new user 
+        </a>
+    </div>
+
+</div>
+}

@@ -1,0 +1,19 @@
+﻿@model int
+@{
+    ViewData["Title"] = "404 Error"; /*Title from the title page ViewData*/
+}
+
+<div class="alert-danger mt-5 mb-1">
+    <!--mt and mb means margin top and buttom respectively-->
+    <h4 style="text-align:center">Bug Searched Not Found</h4>
+    <hr />
+    <h5 style="text-align:center">
+        Bug with Id = @Model cannot be found
+    </h5>
+</div>
+<a asp-action="Index" asp-controller="Bugs" class="btn btn-outline-success" style="width:auto">
+    Click here to see the list of all reported bugs
+</a>
+
+
+

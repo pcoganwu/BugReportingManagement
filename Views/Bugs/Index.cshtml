@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BugReportingManagement.Models.Bugs>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary btn-sm" style="width:auto">Create a New Bug Report</a>
+</p>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width:6%">
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th style="width:12%">
+                            @Html.DisplayNameFor(model => model.BugCreatedBy)
+                        </th>
+                        <th style="width:10%">
+                            @Html.DisplayNameFor(model => model.BugCreatedOn)
+                        </th>
+                        @*<th>
+                        @Html.DisplayNameFor(model => model.BugClosedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BugClosedOn)
+                    </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.BugResolutionSummary)
+                        </th>
+                        @*<th>
+                        @Html.DisplayNameFor(model => model.Attachment)
+                    </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.BugPriority)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BugStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Project)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BugCreatedBy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BugCreatedOn)
+                            </td>
+                            @*<td>
+                            @Html.DisplayFor(modelItem => item.BugClosedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BugClosedOn)
+                        </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BugResolutionSummary)
+                            </td>
+                            @*<td>
+                            @Html.DisplayFor(modelItem => item.Attachment)
+                        </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BugPriority.BugPriorityType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BugStatus.BugStatusType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Project.Name)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mb-1 btn-sm">Update</a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary mb-1 btn-sm">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

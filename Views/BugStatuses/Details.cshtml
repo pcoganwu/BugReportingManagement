@@ -1,0 +1,23 @@
+﻿@model BugReportingManagement.Models.BugStatuses
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3>Details</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BugStatusType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BugStatusType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to Status Settings</a>
+</div>

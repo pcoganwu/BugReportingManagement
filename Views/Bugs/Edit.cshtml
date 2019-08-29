@@ -1,0 +1,85 @@
+﻿@model BugReportingManagement.ViewModels.BugsEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>Update Bug</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ExistingDocument" />
+            <div class="form-group">
+                <label asp-for="ProjectId" class="control-label"></label>
+                <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+                <span asp-validation-for="ProjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BugPriorityId" class="control-label"></label>
+                <select asp-for="BugPriorityId" class="form-control" asp-items="ViewBag.BugPriorityId"></select>
+                <span asp-validation-for="BugPriorityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BugStatusId" class="control-label"></label>
+                <select asp-for="BugStatusId" class="form-control" asp-items="ViewBag.BugStatusId"></select>
+                <span asp-validation-for="BugStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BugCreatedBy" class="control-label"></label>
+                <input asp-for="BugCreatedBy" class="form-control" />
+                <span asp-validation-for="BugCreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BugCreatedOn" class="control-label"></label>
+                <input asp-for="BugCreatedOn" value="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" readonly />
+                <span asp-validation-for="BugCreatedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BugClosedBy" class="control-label"></label>
+                <input asp-for="BugClosedBy" class="form-control" />
+                <span asp-validation-for="BugClosedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BugClosedOn" class="control-label"></label>
+                <input asp-for="BugClosedOn" class="form-control" />
+                <span asp-validation-for="BugClosedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BugResolutionSummary" class="control-label"></label>
+                <textarea asp-for="BugResolutionSummary" class="form-control" cols="10" wrap="hard"></textarea>
+                <span asp-validation-for="BugResolutionSummary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Document" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="Document" class="form-control custom-file-input" /><!--Additional is for the choose file/ multiple attribute is to select multiple files -->
+                    <label class="custom-file-label">Click here to add a new document...</label>
+                </div>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="Attachment" class="control-label"></label>
+            <input asp-for="Attachment" class="form-control" />
+            <span asp-validation-for="Attachment" class="text-danger"></span>
+        </div>*@
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-primary">Cancel</a>
+        </div>
+            <!--jQuery code below is to show the file name of the selected file name-->
+            @section Scripts {
+                <script>
+                $(document).ready(function () {
+                    $('.custom-file-input').on("change", function () {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).next('.custom-file-label').html(fileName);
+                    })
+                });
+                </script>
+            }
+        </form>
+    </div>
+</div>

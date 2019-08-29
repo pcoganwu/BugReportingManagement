@@ -1,0 +1,29 @@
+﻿@model BugReportingManagement.Models.Locations
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3>Details</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tester)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tester.FirstName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Update</a> |
+    <a asp-action="Index">Back to Current Location</a>
+</div>
